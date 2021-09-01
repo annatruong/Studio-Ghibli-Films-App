@@ -15,10 +15,19 @@ fetch('https://ghibliapi.herokuapp.com/films')
   })
   .then((data) => {
     const randomFilm = data[Math.floor(Math.random()*data.length)];
-    //console.log(randomFilm.title);
+
     const h1 = document.createElement('h1');
     h1.textContent = 'Which Studio Ghibli movie should I watch tonight?';
+
+    const card = document.createElement('div');
+    card.setAttribute('class', 'card');
+
+    const h2 = document.createElement('h2');
+    h2.textContent = randomFilm.title;
+
     container.append(h1);
+    container.append(card);
+    card.append(h2);
   })
   .catch((err) => {
     console.log(err);
